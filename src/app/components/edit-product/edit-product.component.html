@@ -1,0 +1,48 @@
+<div mat-dialog-content>
+    <form [formGroup]="productForm"
+          class="form-style">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput
+                   formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Brand</mat-label>
+            <input matInput
+                   formControlName="brand">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <input matInput
+                   formControlName="category">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input matInput
+                   formControlName="price">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Discount Percentage</mat-label>
+            <input matInput
+                   formControlName="discountPercentage">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Rating</mat-label>
+            <input matInput
+                   formControlName="rating">
+        </mat-form-field>
+        <mat-form-field style="grid-column: 1/ span 3;">
+            <mat-label>Description</mat-label>
+            <input matInput
+                   formControlName="description">
+        </mat-form-field>
+    </form>
+</div>
+<div class="two-buttons">
+    <button mat-stroked-button
+            color="warn"
+            (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="save()">Save</button>
+</div>

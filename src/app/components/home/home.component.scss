@@ -1,0 +1,30 @@
+.container {
+    max-width: 80%;
+    margin: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .search-section {
+        display: grid;
+        grid-template-columns: auto auto;
+        text-align: center;
+
+        h2 {
+            text-align: left;
+        }
+    }
+
+    .search-style {
+        align-items: center;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: end;
+        gap: 20px;
+
+
+    }
+
+
+
+
+}
