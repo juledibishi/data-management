@@ -25,6 +25,7 @@ export class EditProductComponent {
     price: new FormControl(),
     discountPercentage: new FormControl(),
     rating: new FormControl(),
+    stock: new FormControl(),
     description: new FormControl(),
   })
 

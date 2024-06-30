@@ -3,6 +3,7 @@ export interface ProductRoot {
     total: number;
     skip: number;
     limit: number;
+    totalItems: number;
 }
 
 export interface Product {

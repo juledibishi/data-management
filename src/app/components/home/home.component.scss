@@ -3,6 +3,9 @@
     margin: auto;
     padding-top: 100px;
     padding-bottom: 100px;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: auto 120px;
 
     .search-section {
         display: grid;
@@ -23,8 +26,8 @@
 
 
     }
+}
 
-
-
-
+.paginator {
+    text-align: right;
 }

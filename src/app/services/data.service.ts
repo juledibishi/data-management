@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProductRoot } from '../models/product.model';
 import { map } from 'rxjs';
@@ -18,4 +18,7 @@ export class DataService {
       );
 
   }
+
+
+
 }

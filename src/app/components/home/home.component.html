@@ -1,65 +1,112 @@
-<div class="container">
-    <div class="search-section">
-        <div>
-            <h2>PRODUCTS</h2>
-        </div>
-        <div class="search-style">
-            <div>
-                <form [formGroup]="searchForm">
-                    <mat-form-field>
-                        <mat-label>Search</mat-label>
-                        <input matInput
-                               formControlName="search"
-                               (input)="searchProduct()">
-                    </mat-form-field>
-
-                </form>
-            </div>
-            <div>
-                <button mat-icon-button
-                        color="primary">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-        </div>
-
-
+<div style="padding:50px 200px 50px 200px;">
+    <app-search (filterProduct)="searchProduct($event)"></app-search>
+    <div>
+        <button mat-icon-button
+                color="primary"
+                (click)="addProduct()">
+            <mat-icon>add</mat-icon>
+        </button>
     </div>
-    <table class="custom-table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Discount Percentage</th>
-                <th>Rating</th>
-                <th>Stock</th>
-                <th>Brand</th>
-                <th>Category</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let p of products;let index = index">
-                <td>{{p.title}}</td>
-                <td>{{p.description}}</td>
-                <td>{{p.price}}</td>
-                <td>{{p.discountPercentage}}</td>
-                <td>{{p.rating}}</td>
-                <td>{{p.stock}}</td>
-                <td>{{p.brand}}</td>
-                <td>{{p.category}}</td>
-                <td><button mat-icon-button
-                            (click)="editProduct(p)"
-                            color="primary"><mat-icon>edit</mat-icon></button></td>
-                <td><button mat-icon-button
-                            (click)="deleteProduct(p, index)"
-                            color="warn"><mat-icon>delete</mat-icon></button></td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="paginator">
+</div>
+<div class="container">
+    <div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="custom-th">
+                            <span>Title</span>
+                            <app-quick-filter (filterAndSort)="quickFilterResult($event,'title')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Description</span>
+                            <app-quick-filter
+                                              (filterAndSort)="quickFilterResult($event,'description')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Price</span>
+                            <app-quick-filter (filterAndSort)="quickFilterResult($event,'price')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Discount Percentage</span>
+                            <app-quick-filter
+                                              (filterAndSort)="quickFilterResult($event,'discountPercentage')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Rating</span>
+                            <app-quick-filter (filterAndSort)="quickFilterResult($event,'rating')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Stock</span>
+                            <app-quick-filter (filterAndSort)="quickFilterResult($event,'stock')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Brand</span>
+                            <app-quick-filter (filterAndSort)="quickFilterResult($event,'brand')"></app-quick-filter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="custom-th">
+                            <span>Category</span>
+                            <app-quick-filter (filterAndSort)="quickFilterResult($event,'category')">
+                            </app-quick-filter>
+                        </div>
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of products | paginate: { itemsPerPage: 5, currentPage: p };let index = index">
+                    <td>{{p.title}}</td>
+                    <td>{{p.description}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.discountPercentage}}</td>
+                    <td>{{p.rating}}</td>
+                    <td>{{p.stock}}</td>
+                    <td>{{p.brand}}</td>
+                    <td>{{p.category}}</td>
+                    <td><button mat-icon-button
+                                (click)="editProduct(p)"
+                                color="primary"><mat-icon>edit</mat-icon></button></td>
+                    <td><button mat-icon-button
+                                (click)="deleteProduct(p, index)"
+                                color="warn"><mat-icon>delete</mat-icon></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="paginator">
+            <pagination-controls (pageChange)="p = $event"
+                                 (pageSizeChange)="count = $event"></pagination-controls>
 
+        </div>
+    </div>
+    <div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th> Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of data">
+                    <td>{{d.id}}</td>
+                    <td>{{d.name}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
